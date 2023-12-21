@@ -1,13 +1,192 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --body-color: #212121;
+  --body-bg: #f1f3f6;
+  --shadow-primary: 0 1px 8px 0 rgba(0, 0, 0, 0.06);
+  --text-light: #878787;
+  --text-blue: #2874f0;
+  --text-green: #388e3c;
+  --heading-primary: #314363;
+  --heading-secondary: #263857;
+  --text-secondary: #7d7d7d;
+  --text-tertiary: #6f8bbc;
+  --border-primary: #d5d5d5;
+  --border-secondary: #f4f4f4;
+  --border-tertiary: #25406d;
+  --btn-bg-primary: #e3e3e3;
+  --btn-bg-secondary: #142a51;
+  --btn-bg-tertiary: #1c3663;
+  --text-white: #fff;
+  --input-bg: #dce9fa63;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Color */
+.shadow-primary {
+  box-shadow: var(--shadow-primary);
+}
+.text-blue {
+  color: var(--text-blue) !important;
+}
+.text-green {
+  color: var(--text-green) !important;
+}
+.text-light {
+  color: var(--text-light) !important;
+}
+.bg-green {
+  background-color: var(--text-green) !important;
+}
+
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 16px !important;
+  line-height: 27px !important;
+  color: var(--body-color);
+  background-color: var(--body-bg);
+  overflow-x: hidden !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-bottom: 0px !important;
+}
+
+img {
+  width: 100% !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+button {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.app-layout {
+  padding: 24px;
+}
+
+.b-bottom-primary {
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Font Weight */
+.fw-700 {
+  font-weight: 700 !important;
+}
+.fw-600 {
+  font-weight: 600 !important;
+}
+.fw-500 {
+  font-weight: 500 !important;
+}
+.fw-400 {
+  font-weight: 400 !important;
+}
+
+/* Font Size */
+.fs-22 {
+  font-size: 22px !important;
+}
+.fs-18 {
+  font-size: 18px !important;
+}
+.fs-16 {
+  font-size: 16px !important;
+}
+.fs-14 {
+  font-size: 14px !important;
+}
+
+/* Button */
+.btn {
+  border: transparent;
+  width: 130px;
+  padding: 10px 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+.primary-btn {
+  background-color: var(--text-blue) !important;
+  color: var(--text-white) !important;
+}
+.secondary-btn {
+  background-color: var(--btn-bg-primary) !important;
+  color: var(--heading-secondary) !important;
+}
+
+/* Custom Scrollbar */
+/* .custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: var(--btn-bg-tertiary) !important;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--border-primary) !important;
+} */
+
+/* ==== Dropdown ===== */
+/* .dropdown-icon-disable::after,
+.search-dropdown button::after {
+  content: none;
+} */
+
+/* ===== Form ======== */
+.form-label {
+  font-size: 16px;
+  line-height: 18.2px;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+.form-control,
+.form-select {
+  font-size: 16px;
+  border: none;
+  font-weight: 500;
+  color: var(--text-light) !important;
+  background-color: var(--input-bg) !important;
+  padding: 16px;
+  border-radius: 16px;
+  font-weight: 400;
+}
+.form-control:hover,
+.form-control:focus,
+.form-select:hover,
+.form-select:focus {
+  box-shadow: none;
+  border: none;
+}
+
+/* ==== Product Card CSS ======= */
+.sort-box span {
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.sort-box span.active {
+  border-bottom: 2px solid #2874f0;
+}
+/* ==== Product Card CSS ======= */
+.product-card:hover {
+  box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.11);
+}
+.product-card .product-img {
+  height: 280px;
+  width: 200px;
+}
+.product-card .title {
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 2.5em;
 }
