@@ -3,6 +3,7 @@ import { productsData } from "../constants";
 
 const initialState = {
   products: productsData.sort((a, b) => b.rating - a.rating),
+  filteredProducts: productsData,
   sortBy: "popularity",
   filters: {
     rating: null,
@@ -15,35 +16,27 @@ export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    updateProduct(state, action) {
-      // const productIndex = state.products.findIndex(
-      //   (product) => product.id === action.payload.id
-      // );
-
-      // if (productIndex !== -1) {
-      //   state.products[productIndex] = action.payload;
-      // }
-      // const productIndex = state.products.findIndex(
-      //   (product) => product.id === action.payload.id
-      // );
-
+    addProduct(state, action) {
       state.products.push(action.payload);
+      state.filteredProducts.push(action.payload);
     },
     sortByPopularity(state) {
-      state.products = state.products.sort((a, b) => b.rating - a.rating);
+      state.filteredProducts = state.products.sort(
+        (a, b) => b.rating - a.rating
+      );
       state.sortBy = "popularity";
     },
     sortByAscending(state) {
-      state.products = state.products.sort((a, b) => a.sp - b.sp);
+      state.filteredProducts = state.products.sort((a, b) => a.sp - b.sp);
       state.sortBy = "priceAscending";
     },
     sortByDescending(state) {
-      state.products = state.products.sort((a, b) => b.sp - a.sp);
+      state.filteredProducts = state.products.sort((a, b) => b.sp - a.sp);
       state.sortBy = "priceDescending";
     },
     filterByPrice(state, action) {
       const { priceRange } = action.payload;
-      state.products = productsData.filter((product) => {
+      state.filteredProducts = state.products.filter((product) => {
         switch (priceRange) {
           case "under1000":
             return product.sp < 1000;
@@ -61,14 +54,14 @@ export const productsSlice = createSlice({
     },
     filterByRating(state, action) {
       const rating = action.payload;
-      state.products = productsData.filter(
+      state.filteredProducts = state.products.filter(
         (product) => product.rating >= rating
       );
       state.filters.rating = rating;
     },
     filterByColor(state, action) {
       const { color } = action.payload;
-      state.products = productsData.filter((product) => {
+      state.filteredProducts = state.products.filter((product) => {
         switch (color) {
           case "Black":
             return product.color === "Black";
@@ -84,17 +77,27 @@ export const productsSlice = createSlice({
       });
       state.filters.color = color;
     },
+    clearFilters(state) {
+      // state.sortBy = "popularity";
+      state.filteredProducts = state.products;
+      state.filters = {
+        rating: null,
+        price: null,
+        color: null,
+      };
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
 export const {
-  updateProduct,
+  addProduct,
   sortByAscending,
   sortByDescending,
   sortByPopularity,
   filterByPrice,
   filterByRating,
   filterByColor,
+  clearFilters,
 } = productsSlice.actions;
 export default productsSlice.reducer;

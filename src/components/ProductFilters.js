@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  clearFilters,
   filterByColor,
   filterByPrice,
   filterByRating,
@@ -69,9 +70,19 @@ const ProductFilters = () => {
   const filters = useSelector((state) => state.products.filters);
   const dispatch = useDispatch();
 
+  const handleClearFilters = () => {
+    dispatch(clearFilters());
+  };
+
   return (
     <div className="shadow-primary bg-white">
       <h3 className="fw-500 fs-22 p-3 b-bottom-primary">Filters</h3>
+      <button
+        className="btn btn-link text-danger fs-14"
+        onClick={handleClearFilters}
+      >
+        Clear Filters
+      </button>
       <div className="p-3">
         <h4 className="fs-14">PRICE</h4>
         <ul className="list-unstyled ps-3 pt-2 mb-0">

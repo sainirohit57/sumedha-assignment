@@ -1,5 +1,5 @@
 import { Button, Form, Modal } from "react-bootstrap";
-import { updateProduct } from "../utils/productsSlice";
+import { addProduct } from "../utils/productsSlice";
 import { useDispatch } from "react-redux";
 
 const ProductAddForm = ({ show, handleClose }) => {
@@ -19,7 +19,7 @@ const ProductAddForm = ({ show, handleClose }) => {
       img: e.target["img"].files[0],
     };
 
-    dispatch(updateProduct(formData));
+    dispatch(addProduct(formData));
     handleClose();
   };
 
